@@ -6,28 +6,49 @@ namespace WernerDweight\DoctrineXIncludeXmlDriverBundle\Doctrine\Driver;
 use Doctrine\Common\Persistence\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver;
 use Doctrine\ORM\Mapping\MappingException;
+use DOMDocument;
+use SimpleXMLElement;
 
 final class XmlDriver extends SimplifiedXmlDriver
 {
     /**
      * @param string $file
-     * @return array|ClassMetadata[]
+     *
+     * @return SimpleXMLElement
+     *
+     * @throws MappingException
+     * @SuppressWarnings(PHPMD.StaticAccess)
+     */
+    protected function loadXml(string $file): SimpleXMLElement
+    {
+        $xmlDom = new DOMDocument();
+        $xmlString = file_get_contents($file);
+        if (false === $xmlString) {
+            throw MappingException::mappingNotFound($file, $file);
+        }
+        $xmlDom->loadXML($xmlString);
+        $xmlDom->documentURI = $file;
+        $xmlDom->xinclude();
+
+        $xmlElement = simplexml_import_dom($xmlDom);
+        if (false === $xmlElement) {
+            throw MappingException::mappingFileNotFound($file, $file);
+        }
+        return $xmlElement;
+    }
+
+    /**
+     * @param string $file
+     *
+     * @return ClassMetadata[]
+     *
      * @throws MappingException
      */
     protected function loadMappingFile($file)
     {
         $result = [];
 
-        $xmlDom = new \DOMDocument();
-        $xmlString = file_get_contents($file);
-        if ($xmlString === false) {
-            throw MappingException::mappingNotFound($file, $file);
-        }
-        $load = $xmlDom->loadXML($xmlString);
-        $xmlDom->documentURI = $file;
-        $xmlDom->xinclude();
-
-        $xmlElement = simplexml_import_dom($xmlDom);
+        $xmlElement = $this->loadXml($file);
 
         // the following code is taken over from parent class
         if (isset($xmlElement->entity)) {

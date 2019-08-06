@@ -1,0 +1,7 @@
+imports:
+    - { resource: 'vendor/wernerdweight/cs/WernerDweight/CS/src/ecs.yaml' }
+
+services:
+    Symplify\CodingStandard\Sniffs\DependencyInjection\NoClassInstantiationSniff:
+        extraAllowedClasses:
+            - DOMDocument
