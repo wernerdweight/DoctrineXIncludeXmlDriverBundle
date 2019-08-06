@@ -7,7 +7,7 @@ use Doctrine\Common\Persistence\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver;
 use Doctrine\ORM\Mapping\MappingException;
 
-final class XIncludeXmlDriver extends SimplifiedXmlDriver
+final class XmlDriver extends SimplifiedXmlDriver
 {
     /**
      * @param string $file
