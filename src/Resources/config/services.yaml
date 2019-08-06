@@ -1,0 +1,13 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    WernerDweight\DoctrineXIncludeXmlDriverBundle\:
+        resource: '../../*'
+        exclude: '../../{DependencyInjection}'
+
+    #WernerDweight\DoctrineXIncludeXmlDriverBundle\Doctrine\Driver\XIncludeXmlDriver:
+    #    arguments:
+    #        $locator: '@Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator'
