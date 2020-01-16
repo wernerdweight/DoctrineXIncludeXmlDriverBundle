@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 class DoctrineXIncludeXmlDriverExtension extends Extension
 {
     /**
-     * @param array            $configs
+     * @param mixed[]          $configs
      * @param ContainerBuilder $container
      *
      * @throws \Exception

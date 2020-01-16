@@ -7,6 +7,8 @@ use Doctrine\Common\Persistence\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver;
 use Doctrine\ORM\Mapping\MappingException;
 use DOMDocument;
+use Safe\Exceptions\FilesystemException;
+use Safe\Exceptions\SimplexmlException;
 use SimpleXMLElement;
 
 final class XmlDriver extends SimplifiedXmlDriver
@@ -22,16 +24,18 @@ final class XmlDriver extends SimplifiedXmlDriver
     protected function loadXml(string $file): SimpleXMLElement
     {
         $xmlDom = new DOMDocument();
-        $xmlString = file_get_contents($file);
-        if (false === $xmlString) {
+        try {
+            $xmlString = \Safe\file_get_contents($file);
+        } catch (FilesystemException $exception) {
             throw MappingException::mappingNotFound($file, $file);
         }
         $xmlDom->loadXML($xmlString);
         $xmlDom->documentURI = $file;
         $xmlDom->xinclude();
 
-        $xmlElement = simplexml_import_dom($xmlDom);
-        if (false === $xmlElement) {
+        try {
+            $xmlElement = \Safe\simplexml_import_dom($xmlDom);
+        } catch (SimplexmlException $exception) {
             throw MappingException::mappingFileNotFound($file, $file);
         }
         return $xmlElement;
