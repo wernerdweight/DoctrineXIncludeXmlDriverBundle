@@ -9,9 +9,6 @@ use WernerDweight\DoctrineXIncludeXmlDriverBundle\DependencyInjection\Compiler\D
 
 class DoctrineXIncludeXmlDriverBundle extends Bundle
 {
-    /**
-     * @param ContainerBuilder $container
-     */
     public function build(ContainerBuilder $container): void
     {
         parent::build($container);

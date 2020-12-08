@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace WernerDweight\DoctrineXIncludeXmlDriverBundle\Doctrine\Driver;
 
-use Doctrine\Common\Persistence\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver;
 use Doctrine\ORM\Mapping\MappingException;
+use Doctrine\Persistence\Mapping\ClassMetadata;
 use DOMDocument;
 use Safe\Exceptions\FilesystemException;
 use Safe\Exceptions\SimplexmlException;
@@ -14,10 +14,6 @@ use SimpleXMLElement;
 final class XmlDriver extends SimplifiedXmlDriver
 {
     /**
-     * @param string $file
-     *
-     * @return SimpleXMLElement
-     *
      * @throws MappingException
      * @SuppressWarnings(PHPMD.StaticAccess)
      */

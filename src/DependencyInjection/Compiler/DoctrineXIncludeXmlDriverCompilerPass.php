@@ -16,9 +16,6 @@ final class DoctrineXIncludeXmlDriverCompilerPass implements CompilerPassInterfa
     /** @var string */
     private const DEFAULT_XML_METADATA_DRIVER_SERVICE = 'doctrine.orm.default_xml_metadata_driver';
 
-    /**
-     * @param ContainerBuilder $container
-     */
     public function process(ContainerBuilder $container): void
     {
         $originalDefinition = $container->findDefinition(self::DEFAULT_XML_METADATA_DRIVER_SERVICE);

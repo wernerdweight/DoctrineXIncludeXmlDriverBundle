@@ -11,8 +11,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 class DoctrineXIncludeXmlDriverExtension extends Extension
 {
     /**
-     * @param mixed[]          $configs
-     * @param ContainerBuilder $container
+     * @param mixed[] $configs
      *
      * @throws \Exception
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)

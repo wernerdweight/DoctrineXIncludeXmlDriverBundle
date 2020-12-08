@@ -1,7 +1,7 @@
 imports:
     - { resource: 'vendor/wernerdweight/cs/src/ecs.yaml' }
 
-services:
-    WernerDweight\CS\Sniffs\DependencyInjection\NoClassInstantiationSniff:
-        extraAllowedClasses:
-            - DOMDocument
+#services:
+#    WernerDweight\CS\Sniffs\DependencyInjection\NoClassInstantiationSniff:
+#        extraAllowedClasses:
+#            - DOMDocument
