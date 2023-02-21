@@ -13,7 +13,9 @@ use WernerDweight\DoctrineXIncludeXmlDriverBundle\Doctrine\Driver\XmlDriver;
  */
 final class DoctrineXIncludeXmlDriverCompilerPass implements CompilerPassInterface
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     private const DEFAULT_XML_METADATA_DRIVER_SERVICE = 'doctrine.orm.default_xml_metadata_driver';
 
     public function process(ContainerBuilder $container): void

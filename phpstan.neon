@@ -1,3 +1,13 @@
 includes:
     - vendor/thecodingmachine/phpstan-safe-rule/phpstan-safe-rule.neon
     - vendor/wernerdweight/cs/src/Rules/phpstan-rules.neon
+
+parameters:
+    checkGenericClassInNonGenericObjectType: false
+    ignoreErrors:
+        -
+            message: '#Use explicit names over dynamic ones#'
+            path: 'src/Doctrine/Driver/XmlDriver.php'
+        -
+            message: '#Method call return value that should be used, but is not#'
+            path: 'src/Doctrine/Driver/XmlDriver.php'

@@ -3,7 +3,7 @@ DoctrineXIncludeXmlDriverBundle
 
 Symfony bundle providing XInclude support for XML mapping of Doctrine.
 
-[![Build Status](https://travis-ci.org/wernerdweight/DoctrineXIncludeXmlDriverBundle.svg?branch=master)](https://travis-ci.org/wernerdweight/DoctrineXIncludeXmlDriverBundle)
+[![Build Status](https://app.travis-ci.com/wernerdweight/DoctrineXIncludeXmlDriverBundle.svg?branch=master)](https://app.travis-ci.com/wernerdweight/DoctrineXIncludeXmlDriverBundle)
 [![Latest Stable Version](https://poser.pugx.org/wernerdweight/doctrine-xinclude-xml-driver-bundle/v/stable)](https://packagist.org/packages/wernerdweight/doctrine-xinclude-xml-driver-bundle)
 [![Total Downloads](https://poser.pugx.org/wernerdweight/doctrine-xinclude-xml-driver-bundle/downloads)](https://packagist.org/packages/wernerdweight/doctrine-xinclude-xml-driver-bundle)
 [![License](https://poser.pugx.org/wernerdweight/doctrine-xinclude-xml-driver-bundle/license)](https://packagist.org/packages/wernerdweight/doctrine-xinclude-xml-driver-bundle)

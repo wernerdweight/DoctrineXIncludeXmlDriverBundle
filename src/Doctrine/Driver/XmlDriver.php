@@ -14,30 +14,6 @@ use SimpleXMLElement;
 final class XmlDriver extends SimplifiedXmlDriver
 {
     /**
-     * @throws MappingException
-     * @SuppressWarnings(PHPMD.StaticAccess)
-     */
-    protected function loadXml(string $file): SimpleXMLElement
-    {
-        $xmlDom = new DOMDocument();
-        try {
-            $xmlString = \Safe\file_get_contents($file);
-        } catch (FilesystemException $exception) {
-            throw MappingException::mappingNotFound($file, $file);
-        }
-        $xmlDom->loadXML($xmlString);
-        $xmlDom->documentURI = $file;
-        $xmlDom->xinclude();
-
-        try {
-            $xmlElement = \Safe\simplexml_import_dom($xmlDom);
-        } catch (SimplexmlException $exception) {
-            throw MappingException::mappingFileNotFound($file, $file);
-        }
-        return $xmlElement;
-    }
-
-    /**
      * @param string $file
      *
      * @return ClassMetadata[]
@@ -69,5 +45,29 @@ final class XmlDriver extends SimplifiedXmlDriver
         }
 
         return $result;
+    }
+
+    /**
+     * @throws MappingException
+     * @SuppressWarnings(PHPMD.StaticAccess)
+     */
+    private function loadXml(string $file): SimpleXMLElement
+    {
+        $xmlDom = new DOMDocument();
+        try {
+            $xmlString = \Safe\file_get_contents($file);
+        } catch (FilesystemException $exception) {
+            throw MappingException::mappingNotFound($file, $file);
+        }
+        $xmlDom->loadXML($xmlString);
+        $xmlDom->documentURI = $file;
+        $xmlDom->xinclude();
+
+        try {
+            $xmlElement = \Safe\simplexml_import_dom($xmlDom);
+        } catch (SimplexmlException $exception) {
+            throw MappingException::mappingFileNotFound($file, $file);
+        }
+        return $xmlElement;
     }
 }
